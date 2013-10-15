@@ -8,19 +8,55 @@ namespace RationalNumbers
     // Test class in order to see that the class being written is working
     class testRational
     {
+
+		
         // "Main" entry point into program
         static void Main(string[] args)
         {
+			// Create a new instance of the class MenuOption for user input
+			MenuOption MenuOption1 = new MenuOption();
+			
+			// Call GetInput function in order to get inputs to be reduced
+			MenuOption1.GetInput();
+			
             // Create a new instance of the class Rational
             Rational Rational1 = new Rational();
-
-            // In that class give two numbers (Numerator/Denominator) and send to the method "FindResult"
-            Rational1.FindReducedForm(8, 12);
+			
+			// Send numbers to reduced form function. 
+            Rational1.FindReducedForm(MenuOption1.InptNum, MenuOption1.InptDen);
+			
             // Write the values found to the screen
             Console.WriteLine(Rational1.RNum);
             Console.WriteLine(Rational1.RDen);
         }
     }
+	
+	// Declare class to give user option to reduce fraction and enter variables to be reduced
+	class MenuOption
+	{
+		// Delcare private integers to be used to take user input for fractions before sending to reduction function
+		public int InptNum;
+		public int InptDen;
+		
+		// Constructor for menu option variables
+		public MenuOption()
+		{		
+			InptNum = 0;
+			InptDen = 0;
+		}
+		
+		// Function call to get fraction to be reduced
+		public int GetInput()
+		{
+			// Get two numbers (Numerator/Denominator) from user input
+			Console.WriteLine("Please enter a Numerator");
+			InptNum = Convert.ToInt32(Console.ReadLine());
+			Console.WriteLine("Please enter a Denominator");
+			InptDen = Convert.ToInt32(Console.ReadLine());
+			
+			return InptDen;
+		}
+	}
 
     // Create the class "Rational"
     public class Rational
