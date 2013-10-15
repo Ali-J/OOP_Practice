@@ -54,24 +54,43 @@ namespace RationalNumbers
             // Assign values recieved from method call to variables declared within class
             RNum = Num;
             RDen = Den;
+			
+			// Debug Write the values to the screen to check function has been called correctly
+			///Console.WriteLine("DEBUG: Check that values are sent to function correctly");
+            ///Console.WriteLine(RNum);
+            ///Console.WriteLine(RDen);
 
             // Find highest common factor for numerator and denominator
             while (Divisor <= RNum)
             {
+				// Debug Write the values to the screen to check function has been called correctly
+				///Console.WriteLine("DEBUG: Check that loop is executing correctly");
+	            ///Console.WriteLine(Divisor);
+	            ///Console.WriteLine(RNum);
+				
                 // Find values with remainder 0 when dividing numerator and denominator by divisor
                 if (((RNum % Divisor) == 0) & ((RDen % Divisor) == 0))
                 {
-                   HCF = Divisor;
+                  	HCF = Divisor;
+					Divisor++;
                 }
                 else
                     Divisor++;
+			// Debug Write the found values to the screen to check function has been executed correctly
+			///Console.WriteLine("DEBUG: Check that HCF is calculated in loop correctly");
+            ///Console.WriteLine(HCF);
             }
 
             // Reduce value in order that most reduced form is written to screen.
-            RNum = Num/Divisor;
-            RDen = Den/Divisor;
-
-            return RDen;
+            RNum = Num/HCF;
+            RDen = Den/HCF;
+			
+			// Debug Write the found values to the screen to check function has been executed correctly
+			///Console.WriteLine("DEBUG: Check that values are calculated in function correctly");
+            ///Console.WriteLine(RNum);
+            ///Console.WriteLine(RDen);
+			
+            return RNum;
 
         }
     }
